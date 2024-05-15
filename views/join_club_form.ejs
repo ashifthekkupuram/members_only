@@ -1,0 +1,15 @@
+<% extend('layout') %>
+
+<form action="/join_club" method="post">
+    <h2 class="mb-3 modal-title ">Join Club</h2>
+    <% if (errors) { %>
+        <div class="alert alert-danger" role="alert">
+          <%= errors %>
+        </div>
+      <% } %>
+    <div class="mb-3">
+        <label for="passcode" class="form-label">Passcode</label>
+        <input type="password" class="form-control" id="passcode" name="passcode" <% if(passcode) {%> value="<%= passcode %>" <% } %>>
+    </div>
+    <button type="submit" class="btn btn-primary">Join</button>
+</form>

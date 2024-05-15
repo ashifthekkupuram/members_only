@@ -1,0 +1,28 @@
+<% extend('layout') %>
+
+<% if (posts && posts.length > 0) { %>
+    <li class="list-group-item py-4 ">
+    <div class="row">
+    <% posts.forEach( (post) => { %>
+        <div class="card me-2" style="width: 15rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%=post.message%></h5>
+              <p class="card-text"><%=post.content%></p>
+              <% if(currentUser && currentUser.membershipStatus) { %>
+                <small class="card-subtitle"><%=post.author.firstName%> <%=post.author.secondName%></small>
+                <% } %> 
+                <% if(auth) { %>
+                    <% if(currentUser && post.author.id === currentUser.id || currentUser.admin) { %>
+                        <br>
+                        <a href="/<%=post.id%>/update" class="btn btn-sm btn-secondary">Edit</a>
+                        <a href="/<%=post.id%>/delete" class="btn btn-sm btn-danger">Delete</a>
+                    <% } %>
+                <% } %>
+            </div>
+          </div>
+    <% }); %>
+</div>
+</li>
+<% } else { %>
+    <h1>There are no posts</h1>
+<% } %>

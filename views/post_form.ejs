@@ -1,0 +1,23 @@
+<% extend('layout') %>
+ 
+<form method="post">
+    <h2 class="mb-3 modal-title "><%= title %> Post</h2>
+    <% if (errors) { %>
+      <div class="alert alert-danger" role="alert">
+        <% errors.forEach(error => { %>
+          <li>
+          <%= error.msg %>
+        </li>
+        <% }); %>
+      </div>
+    <% } %>  
+    <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <input type="text" class="form-control" id="message" name="message" <% if(post) {%> value="<%= post.message %>" <% } %>>
+    </div>
+    <div class="mb-3">
+        <label for="content" class="form-label">Content</label>
+        <textarea class="form-control" id="content" name="content"><% if(post) { %><%= post.content %><% } %></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary"><%= title %></button>
+</form>

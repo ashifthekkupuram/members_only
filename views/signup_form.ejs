@@ -1,0 +1,37 @@
+<% extend('layout') %>
+ 
+<form action="/auth/signup" method="post">
+    <h2 class="mb-3 modal-title ">Sign Up Form</h2>
+    <% if (errors) { %>
+      
+      <div class="alert alert-danger" role="alert">
+        
+        <% errors.forEach(error => { %>
+          <li>
+          <%= error.msg %>
+        </li>
+        <% }); %>
+      </div>
+    <% } %>  
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" <% if(formValues) {%> value="<%= formValues.email %>" <% } %>>
+    </div>
+    <div class="mb-3">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" <% if(formValues) {%> value="<%= formValues.firstName %>" <% } %>>
+    </div>
+    <div class="mb-3">
+        <label for="secondName" class="form-label">Second Name</label>
+        <input type="text" class="form-control" id="secondName" name="secondName" <% if(formValues) {%> value="<%= formValues.secondName %>" <% } %>>
+    </div>
+    <div class="mb-3">
+        <label for="password1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password1" name="password1" <% if(formValues) {%> value="<%= formValues.password1 %>" <% } %>>
+    </div>
+    <div class="mb-3">
+      <label for="password2" class="form-label">Confirm Password</label>
+      <input type="password" class="form-control" id="password2" name="password2" <% if(formValues) {%> value="<%= formValues.password2 %>" <% } %>>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign Up</button>
+</form>
